@@ -2,9 +2,8 @@ import React from 'react';
 import { caseStudiesData } from '../data/caseStudies';
 import { SectionHeading } from '../components/SectionHeading';
 import { AttributionCallout } from '../components/AttributionCallout';
-import { PlaceholderBlock } from '../components/PlaceholderBlock';
 import { CaseImage } from '../components/CaseImage';
-import { CheckCircle, Layers, Lock, Cpu } from 'lucide-react';
+import { CheckCircle, Layers, Lock, Cpu, ExternalLink } from 'lucide-react';
 
 export const FcsCaseStudy: React.FC = () => {
   const data = caseStudiesData.find(c => c.id === 'fcs')!;
@@ -307,13 +306,39 @@ export const FcsCaseStudy: React.FC = () => {
       <section>
         <SectionHeading number="07" title="Prototype & Deliverables" id="prototype" />
         <div className="grid sm:grid-cols-2 gap-4 mb-4">
-          <div className="p-5 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark">
-            <h4 className="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">Figma Prototype</h4>
-            <PlaceholderBlock label={data.prototype?.figmaUrl || '[FIGMA_LINK_FCS]'} description="High-fidelity interactive Figma file" />
+          <div className="p-6 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark flex flex-col justify-between items-start gap-4">
+            <div>
+              <h4 className="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">Figma Prototype</h4>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400">High-fidelity interactive Figma file</p>
+            </div>
+            {data.prototype?.figmaUrl && (
+              <a
+                href={data.prototype.figmaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-accent text-white hover:bg-accent-hover dark:bg-accent-dark dark:text-neutral-950 dark:hover:bg-accent-darkHover transition-colors"
+              >
+                <span>View Figma Prototype</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
           </div>
-          <div className="p-5 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark">
-            <h4 className="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">Miro Research Workspace</h4>
-            <PlaceholderBlock label={data.prototype?.miroUrl || '[MIRO_LINK_FCS]'} description="Journey maps, affinity map, and IA" />
+          <div className="p-6 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark flex flex-col justify-between items-start gap-4">
+            <div>
+              <h4 className="font-bold text-base text-neutral-900 dark:text-neutral-100 mb-1">Miro Research Workspace</h4>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400">Journey maps, affinity map, and IA</p>
+            </div>
+            {data.prototype?.miroUrl && (
+              <a
+                href={data.prototype.miroUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-accent text-white hover:bg-accent-hover dark:bg-accent-dark dark:text-neutral-950 dark:hover:bg-accent-darkHover transition-colors"
+              >
+                <span>View Miro Workspace</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
           </div>
         </div>
         <ul className="space-y-1 text-xs text-neutral-500 dark:text-neutral-400">

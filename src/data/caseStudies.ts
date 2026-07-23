@@ -254,8 +254,8 @@ export const caseStudiesData: CaseStudyData[] = [
       }
     ],
     prototype: {
-      figmaUrl: '[FIGMA_LINK_FCS]',
-      miroUrl: '[MIRO_LINK_FCS]',
+      figmaUrl: 'https://www.figma.com/design/3jwJJEav6IjHvcmc9P6iP8/FCS-wireframes-and-prototype?node-id=0-1&t=OQUqZ7ketc8cXgbX-1',
+      miroUrl: 'https://miro.com/app/board/uXjVH46tqSs=/?share_link_id=833970686756',
       implementationGapNote: 'Some UI details may differ from the Figma prototype as the build evolves — this is expected and doesn\'t require further justification here.',
       unsplashNote: 'Background imagery used in mockups (e.g. in the homepage and event detail screens) is sourced from Unsplash for prototyping purposes — not original photography.'
     },

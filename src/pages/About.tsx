@@ -1,6 +1,5 @@
 import React from 'react';
 import { SectionHeading } from '../components/SectionHeading';
-import { PlaceholderBlock } from '../components/PlaceholderBlock';
 import { GraduationCap, Code, Layout, CheckCircle2 } from 'lucide-react';
 
 export const About: React.FC = () => {
@@ -40,12 +39,27 @@ export const About: React.FC = () => {
           </p>
         </div>
 
-        <div className="p-6 rounded-2xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <h3 className="font-bold text-base text-neutral-900 dark:text-neutral-50">Curriculum Vitae</h3>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Download my full CV for internship applications</p>
+        <div className="p-6 rounded-2xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark space-y-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+            <div>
+              <h3 className="font-bold text-base text-neutral-900 dark:text-neutral-50">Curriculum Vitae</h3>
+              <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">View my CV for internship applications</p>
+            </div>
+            <span className="text-xs font-medium text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-800 px-2.5 py-1 rounded-full border border-neutral-200 dark:border-neutral-700">
+              Read-Only Preview
+            </span>
           </div>
-          <PlaceholderBlock label="CV PDF not yet attached" description="Will be linked once the file is ready." />
+
+          <div 
+            className="w-full h-[650px] rounded-xl overflow-hidden border border-surface-borderLight dark:border-surface-borderDark bg-neutral-100 dark:bg-neutral-900 relative shadow-inner"
+            onContextMenu={(e) => e.preventDefault()}
+          >
+            <iframe
+              src={`${import.meta.env.BASE_URL}assets/files/CV-Sheshan.pdf#toolbar=0&navpanes=0&scrollbar=1`}
+              title="Sheshan Edward CV"
+              className="w-full h-full border-none select-none"
+            />
+          </div>
         </div>
       </section>
 
@@ -86,7 +100,7 @@ export const About: React.FC = () => {
             </h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">
               {[
-                'React, Vite & TypeScript',
+                'C#, Python and MySQL',
                 'Tailwind CSS & Mobile-First Design',
                 'Laravel — Full-Stack MVC Architecture',
                 'REST API Integration & Authentication Middleware',
