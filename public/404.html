@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sheshan — Portfolio Redirecting...</title>
+    <script type="text/javascript">
+      // GitHub Pages SPA 404 Redirect Trick
+      // This script encodes the full path into a query parameter so index.html can restore it cleanly
+      var pathSegmentsToKeep = 1; // Keeps repo subpath '/Portfolio/'
+      var l = window.location;
+      var repoSubpath = l.pathname.split('/')[1] === 'Portfolio' ? '/Portfolio/' : '/';
+      var targetPath = l.pathname.slice(repoSubpath.length);
+      
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        repoSubpath + '?p=' + encodeURIComponent(targetPath) +
+        (l.search ? '&q=' + encodeURIComponent(l.search.slice(1)) : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

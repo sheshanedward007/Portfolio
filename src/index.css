@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color-scheme: light dark;
+  }
+
+  body {
+    @apply bg-surface-light dark:bg-surface-dark text-neutral-900 dark:text-neutral-100 antialiased selection:bg-accent selection:text-white transition-colors duration-200;
+  }
+
+  /* Custom keyboard focus rings for accessibility */
+  :focus-visible {
+    outline: 2px solid #00606a;
+    outline-offset: 2px;
+  }
+
+  .dark :focus-visible {
+    outline: 2px solid #14b8a6;
+    outline-offset: 2px;
+  }
+}
+
+/* Print & reduced motion styles */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
