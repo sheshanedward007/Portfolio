@@ -15,7 +15,7 @@ export const Home: React.FC = () => {
         </div>
 
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 leading-[1.15]">
-          Hi, I’m Sheshan. <br />
+          Hi, I'm Sheshan Edward. <br />
           <span className="text-accent dark:text-accent-dark font-semibold text-2xl sm:text-4xl lg:text-5xl block mt-2">
             Engineering-grounded UI/UX design.
           </span>
@@ -26,7 +26,7 @@ export const Home: React.FC = () => {
         </p>
 
         <p className="mt-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl">
-          Year 2 Computer Science undergraduate at APIIT Sri Lanka (Staffordshire University partnership), targeting UI/UX design internship applications. I bridge user research, wireframing, and systemic design thinking with full-stack engineering trade-offs.
+          Year 2 Computer Science undergraduate at APIIT Sri Lanka (Staffordshire University partnership), targeting UI/UX design internship opportunities. I combine user research and structured design thinking with full-stack engineering experience — so the interfaces I design are grounded in what's actually feasible to build.
         </p>
 
         {/* Quick Capabilities */}
@@ -67,7 +67,7 @@ export const Home: React.FC = () => {
               Featured Case Studies
             </h2>
             <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
-              In-depth research, design decisions, and engineering trade-offs across three major projects.
+              In-depth research, design decisions, and engineering trade-offs across three projects.
             </p>
           </div>
         </div>
@@ -86,14 +86,14 @@ export const Home: React.FC = () => {
             Design grounded in technical trade-offs.
           </h2>
           <p className="mt-3 text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
-            Many designers hand off mockups without knowing how databases, auth gates, or state machines behave under edge cases. Having built full-stack applications in Laravel and React, I design interfaces that are intuitively legible for users and architecturally sound for developers.
+            A lot of designers hand off mockups without knowing how authentication gates, database schemas, or state machines behave under edge cases. Having built full-stack applications in Laravel and React, I design interfaces that are intuitively legible for users and architecturally sound for the engineers implementing them.
           </p>
           <div className="mt-6">
             <Link
               to="/about"
               className="inline-flex items-center gap-2 text-sm font-semibold text-accent dark:text-accent-dark hover:underline"
             >
-              <span>Read more about my methodology & background</span>
+              <span>More about my approach and background</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -103,7 +103,7 @@ export const Home: React.FC = () => {
       {/* Contact Section */}
       <section id="contact" className="text-center py-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight">
-          Let’s Connect
+          Let's Connect
         </h2>
         <p className="mt-2 text-sm sm:text-base text-neutral-600 dark:text-neutral-400 max-w-md mx-auto">
           Currently open to UI/UX design internship opportunities and collaborative technical projects.
@@ -111,29 +111,29 @@ export const Home: React.FC = () => {
 
         <div className="mt-6 flex flex-wrap justify-center gap-4">
           <a
-            href="[LINKEDIN_LINK]"
+            href="https://www.linkedin.com/in/sheshan-edward-206a4b336/"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-2.5 rounded-lg border border-surface-borderLight dark:border-surface-borderDark bg-surface-cardLight dark:bg-surface-cardDark text-neutral-800 dark:text-neutral-200 text-sm font-medium hover:border-accent dark:hover:border-accent-dark flex items-center gap-2 transition-colors"
           >
             <Linkedin className="w-4 h-4 text-accent dark:text-accent-dark" />
-            <span>LinkedIn Profile</span>
+            <span>LinkedIn</span>
           </a>
           <a
-            href="[GITHUB_LINK]"
+            href="https://github.com/sheshanedward007"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-2.5 rounded-lg border border-surface-borderLight dark:border-surface-borderDark bg-surface-cardLight dark:bg-surface-cardDark text-neutral-800 dark:text-neutral-200 text-sm font-medium hover:border-accent dark:hover:border-accent-dark flex items-center gap-2 transition-colors"
           >
             <Github className="w-4 h-4 text-accent dark:text-accent-dark" />
-            <span>GitHub Profile</span>
+            <span>GitHub</span>
           </a>
           <a
-            href="mailto:[EMAIL_LINK]"
+            href="mailto:sheshanedward007@gmail.com"
             className="px-5 py-2.5 rounded-lg bg-accent dark:bg-accent-dark text-white text-sm font-medium hover:opacity-90 flex items-center gap-2 transition-opacity shadow-sm"
           >
             <Mail className="w-4 h-4" />
-            <span>Send Email</span>
+            <span>sheshanedward007@gmail.com</span>
           </a>
         </div>
       </section>

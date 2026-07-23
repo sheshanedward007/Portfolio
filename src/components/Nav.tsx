@@ -49,7 +49,7 @@ export const Nav: React.FC = () => {
           className="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 hover:text-accent dark:hover:text-accent-dark transition-colors flex items-center gap-2"
         >
           <span className="w-3 h-3 rounded-full bg-accent dark:bg-accent-dark inline-block"></span>
-          <span>Sheshan</span>
+          <span>Sheshan Edward</span>
           <span className="text-xs text-neutral-500 font-normal ml-1 hidden sm:inline">| UI/UX & Full-Stack</span>
         </Link>
 

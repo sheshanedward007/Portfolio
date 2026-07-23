@@ -3,21 +3,21 @@ import { caseStudiesData } from '../data/caseStudies';
 import { SectionHeading } from '../components/SectionHeading';
 import { AttributionCallout } from '../components/AttributionCallout';
 import { PlaceholderBlock } from '../components/PlaceholderBlock';
-import { getAssetUrl } from '../utils/assets';
-import { ArrowUpRight, CheckCircle, ExternalLink, ShieldCheck, UserCheck, Sparkles, Layers, Lock, Cpu } from 'lucide-react';
+import { CaseImage } from '../components/CaseImage';
+import { CheckCircle, Layers, Lock, Cpu } from 'lucide-react';
 
 export const FcsCaseStudy: React.FC = () => {
   const data = caseStudiesData.find(c => c.id === 'fcs')!;
 
   return (
     <div className="max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-0 space-y-16">
-      {/* Header Banner */}
+      {/* Header */}
       <header className="space-y-4">
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
           <span className="px-3 py-1 rounded-full bg-accent-muted dark:bg-accent-darkMuted text-accent dark:text-accent-dark">
             {data.disciplineTag}
           </span>
-          <span className="text-neutral-500">•</span>
+          <span className="text-neutral-500">·</span>
           <span className="text-neutral-600 dark:text-neutral-400">Lead Case Study</span>
         </div>
 
@@ -30,56 +30,43 @@ export const FcsCaseStudy: React.FC = () => {
         </p>
 
         <div className="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-surface-borderLight dark:border-surface-borderDark text-sm text-neutral-600 dark:text-neutral-400">
-          <div>
-            <span className="font-semibold text-neutral-900 dark:text-neutral-200">Role:</span> {data.role}
-          </div>
-          <div>
-            <span className="font-semibold text-neutral-900 dark:text-neutral-200">Organization:</span> {data.context.organization}
-          </div>
+          <div><span className="font-semibold text-neutral-900 dark:text-neutral-200">Role: </span>{data.role}</div>
+          <div><span className="font-semibold text-neutral-900 dark:text-neutral-200">Organisation: </span>{data.context.organization}</div>
         </div>
       </header>
 
-      {/* Main Ownership Statement */}
-      <AttributionCallout type="role" title="Project Ownership & Scope">
+      {/* Role & Ownership */}
+      <AttributionCallout type="role" title="Role & Scope">
         <p>{data.attribution}</p>
       </AttributionCallout>
 
       {/* 1. Context */}
       <section>
         <SectionHeading number="01" title="Context" id="context" />
-        <div className="prose dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed space-y-4">
+        <div className="text-neutral-700 dark:text-neutral-300 leading-relaxed space-y-4 text-base">
           <p>{data.context.overview}</p>
           <p>
-            The case study presented here reflects the actual ongoing project for FCS APIIT. All research artefacts, wireframes, information architecture diagrams, and frontend code structures were developed to produce a production-grade web platform for the society.
+            The case study reflects the actual current project. All research artefacts, architecture decisions, wireframes, and prototypes were produced to inform a production-grade platform for the society.
           </p>
-          
-          <div className="mt-4 p-4 rounded-lg bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark flex items-center justify-between">
-            <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">Official Society Platform Link:</span>
-            {data.context.liveUrl ? (
-              <PlaceholderBlock label={data.context.liveUrl} description="Live site URL link will be updated upon official domain deployment." />
-            ) : (
-              <span className="text-xs font-semibold px-2.5 py-1 rounded bg-amber-500/10 text-amber-600">Launching Soon</span>
-            )}
-          </div>
+          {data.context.liveUrl && data.context.liveUrl !== '[FCS_LIVE_SITE_LINK]' ? (
+            <a href={data.context.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-accent dark:text-accent-dark font-medium hover:underline text-sm">
+              View live site →
+            </a>
+          ) : (
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 italic">Live site link — launching soon.</p>
+          )}
         </div>
       </section>
 
       {/* 2. Problem */}
       <section>
         <SectionHeading number="02" title="Problem" id="problem" />
-        <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
-          {data.problem.summary}
-        </p>
-
+        <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">{data.problem.summary}</p>
         <div className="grid sm:grid-cols-2 gap-4">
           {data.problem.painPoints.map((point, idx) => (
             <div key={idx} className="p-4 rounded-lg bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark flex items-start gap-3">
-              <span className="text-xs font-mono font-bold text-accent dark:text-accent-dark bg-accent-muted dark:bg-accent-darkMuted px-2 py-0.5 rounded shrink-0 mt-0.5">
-                P{idx + 1}
-              </span>
-              <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                {point}
-              </p>
+              <span className="text-xs font-mono font-bold text-accent dark:text-accent-dark bg-accent-muted dark:bg-accent-darkMuted px-2 py-0.5 rounded shrink-0 mt-0.5">P{idx + 1}</span>
+              <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">{point}</p>
             </div>
           ))}
         </div>
@@ -88,13 +75,10 @@ export const FcsCaseStudy: React.FC = () => {
       {/* 3. Research */}
       <section>
         <SectionHeading number="03" title="Research & Discovery" id="research" />
-        
+
         {/* Stakeholders */}
         <div className="mb-8">
-          <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-3 flex items-center gap-2">
-            <UsersIcon className="w-5 h-5 text-accent dark:text-accent-dark" />
-            <span>Identified Stakeholder Groups</span>
-          </h3>
+          <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-3">Stakeholder Groups</h3>
           <ul className="grid sm:grid-cols-2 gap-3">
             {data.research?.stakeholders?.map((sh, idx) => (
               <li key={idx} className="p-3 rounded bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark text-sm text-neutral-700 dark:text-neutral-300 flex items-center gap-2">
@@ -105,73 +89,54 @@ export const FcsCaseStudy: React.FC = () => {
           </ul>
         </div>
 
-        {/* Empathy Mapping Summary */}
+        {/* Empathy Mapping */}
         <div className="mb-10 p-5 rounded-lg bg-neutral-100 dark:bg-neutral-800/60 border border-neutral-200 dark:border-neutral-700">
-          <h4 className="text-base font-bold text-neutral-900 dark:text-neutral-100 mb-2">
-            Empathy Mapping (Says / Thinks / Does / Feels)
-          </h4>
+          <h4 className="text-base font-bold text-neutral-900 dark:text-neutral-100 mb-2">Empathy Mapping</h4>
           <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
-            Full empathy maps were constructed across four key quadrants for Industry Recruiters, Prospective Members, General Members, and Committee Officers. This mapping surfaced emotional barriers — such as non-computing students feeling excluded and recruiters feeling frustrated by unverified Instagram claims.
+            Full empathy maps were built across four quadrants (Says / Thinks / Does / Feels) for Industry Recruiters, Prospective Members, General Members, and Committee Officers. The mapping surfaced emotional barriers — non-computing students feeling excluded with no clear path in, and recruiters frustrated by the inability to verify student involvement claims without a web presence to point to.
           </p>
         </div>
 
         {/* Personas */}
         <div className="mb-12">
-          <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4">
-            User Personas & Key Differentiator
-          </h3>
+          <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4">Personas</h3>
           <div className="grid sm:grid-cols-2 gap-6">
             {data.research?.personas?.map((p, idx) => (
-              <div
-                key={idx}
-                className={`p-6 rounded-xl border transition-all ${
-                  p.highlight
-                    ? 'bg-accent-muted/40 dark:bg-accent-darkMuted/30 border-accent/40 dark:border-accent-dark/40 shadow-sm'
-                    : 'bg-surface-cardLight dark:bg-surface-cardDark border-surface-borderLight dark:border-surface-borderDark'
-                }`}
-              >
+              <div key={idx} className={`p-6 rounded-xl border ${p.highlight ? 'bg-accent-muted/40 dark:bg-accent-darkMuted/30 border-accent/40 dark:border-accent-dark/40 shadow-sm' : 'bg-surface-cardLight dark:bg-surface-cardDark border-surface-borderLight dark:border-surface-borderDark'}`}>
                 {p.tag && (
-                  <span className="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-accent dark:bg-accent-dark text-white mb-2">
-                    {p.tag}
-                  </span>
+                  <span className="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-accent dark:bg-accent-dark text-white mb-2">{p.tag}</span>
                 )}
                 <h4 className="text-lg font-bold text-neutral-900 dark:text-neutral-50">{p.name}</h4>
                 <p className="text-xs font-medium text-accent dark:text-accent-dark mb-3">{p.role}</p>
                 <blockquote className="text-xs italic text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800/80 p-3 rounded border-l-2 border-accent dark:border-accent-dark mb-3">
                   {p.quote}
                 </blockquote>
-                <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                  {p.details}
-                </p>
+                <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">{p.details}</p>
               </div>
             ))}
           </div>
 
-          <AttributionCallout type="info" title="Why Persona Mark Cooray is a Key Portfolio Differentiator">
-            <p>
-              Most student club portfolio projects design strictly for fellow students. Incorporating <strong>Mark Cooray (Industry Recruiter & Sponsor)</strong> as a primary persona forced the system to deliver high-density, verifiable society metrics, public project portfolios, and clear governance details on first visit.
-            </p>
+          <AttributionCallout type="info" title="Why the Recruiter Persona Matters">
+            Most student club projects design only for fellow students. Including <strong>Mark Cooray (Industry Recruiter & Sponsor)</strong> as a primary persona required the design to surface verifiable, structured information — project portfolios, governance details, active event history — on first visit. That's a different design problem from serving a prospective member, and it produces meaningfully different IA decisions.
           </AttributionCallout>
         </div>
 
         {/* Journey Maps */}
         <div className="mb-12">
-          <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4">
-            User Journey Mapping (Current vs. Future State)
-          </h3>
+          <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4">User Journey Mapping</h3>
 
-          {/* Prospective Member Table */}
+          {/* Full table: Prospective Member */}
           <div className="mb-8">
             <h4 className="text-sm font-bold text-accent dark:text-accent-dark uppercase tracking-wider mb-3">
-              1. Prospective Member Joining Journey (Full Breakdown)
+              1. Prospective Member Joining Journey (full breakdown)
             </h4>
             <div className="overflow-x-auto rounded-xl border border-surface-borderLight dark:border-surface-borderDark">
               <table className="w-full text-left text-xs sm:text-sm">
-                <thead className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 border-b border-surface-borderLight dark:border-surface-borderDark font-semibold">
+                <thead className="bg-neutral-100 dark:bg-neutral-800 border-b border-surface-borderLight dark:border-surface-borderDark font-semibold">
                   <tr>
-                    <th className="p-3 sm:p-4">Stage</th>
-                    <th className="p-3 sm:p-4 text-red-600 dark:text-red-400">Current Pain Point</th>
-                    <th className="p-3 sm:p-4 text-emerald-600 dark:text-emerald-400">Future Web Solution</th>
+                    <th className="p-3 sm:p-4 text-neutral-900 dark:text-neutral-100">Stage</th>
+                    <th className="p-3 sm:p-4 text-red-600 dark:text-red-400">Current State</th>
+                    <th className="p-3 sm:p-4 text-emerald-600 dark:text-emerald-400">With Web Platform</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-surface-borderLight dark:divide-surface-borderDark bg-surface-cardLight dark:bg-surface-cardDark">
@@ -187,7 +152,10 @@ export const FcsCaseStudy: React.FC = () => {
             </div>
           </div>
 
-          {/* Summarized Journeys */}
+          {/* Summarised journeys */}
+          <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
+            The same fragmentation problem repeated across every core workflow. Two more journeys were mapped in full — here's the most illustrative evidence from each:
+          </p>
           <div className="grid sm:grid-cols-2 gap-6">
             {data.research?.journeyMaps?.slice(1).map((jm, jIdx) => (
               <div key={jIdx} className="p-5 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark">
@@ -198,7 +166,7 @@ export const FcsCaseStudy: React.FC = () => {
                     <div key={sIdx} className="p-3 rounded bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 text-xs">
                       <span className="font-semibold text-accent dark:text-accent-dark block mb-1">{sr.stage}</span>
                       <p className="text-neutral-500 dark:text-neutral-400 mb-1"><strong>Before:</strong> {sr.currentPain}</p>
-                      <p className="text-neutral-800 dark:text-neutral-200"><strong>With Web Platform:</strong> {sr.solution}</p>
+                      <p className="text-neutral-800 dark:text-neutral-200"><strong>After:</strong> {sr.solution}</p>
                     </div>
                   ))}
                 </div>
@@ -209,18 +177,16 @@ export const FcsCaseStudy: React.FC = () => {
 
         {/* HMW Statements */}
         <div>
-          <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4">
-            "How Might We" (HMW) Research Bridges
-          </h3>
+          <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4">How Might We — Research Bridges</h3>
           <div className="space-y-4">
             {data.research?.hmwStatements?.map((hmw, hIdx) => (
               <div key={hIdx} className="p-4 rounded-lg bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="font-medium text-sm text-neutral-900 dark:text-neutral-100 flex items-start gap-2">
-                  <span className="text-accent dark:text-accent-dark font-bold">HMW:</span>
+                  <span className="text-accent dark:text-accent-dark font-bold shrink-0">HMW:</span>
                   <span>"{hmw.question}"</span>
                 </div>
                 <div className="text-xs text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 px-3 py-1.5 rounded sm:max-w-xs shrink-0">
-                  <span className="font-semibold text-neutral-700 dark:text-neutral-300">Design Connection:</span> {hmw.connection}
+                  <span className="font-semibold text-neutral-700 dark:text-neutral-300">Design connection: </span>{hmw.connection}
                 </div>
               </div>
             ))}
@@ -232,11 +198,10 @@ export const FcsCaseStudy: React.FC = () => {
       <section>
         <SectionHeading number="04" title="Information Architecture" id="ia" />
         <div className="grid md:grid-cols-2 gap-6 mb-6">
-          {/* Public Branch */}
           <div className="p-6 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark">
             <h3 className="text-base font-bold text-neutral-900 dark:text-neutral-100 mb-3 flex items-center gap-2">
               <Layers className="w-5 h-5 text-accent dark:text-accent-dark" />
-              <span>Public Branch Sitemap</span>
+              <span>Public Branch</span>
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">
               {data.informationArchitecture?.sitemapPublic.map((item, idx) => (
@@ -247,12 +212,10 @@ export const FcsCaseStudy: React.FC = () => {
               ))}
             </ul>
           </div>
-
-          {/* CMS Branch */}
           <div className="p-6 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark">
             <h3 className="text-base font-bold text-neutral-900 dark:text-neutral-100 mb-3 flex items-center gap-2">
               <Lock className="w-5 h-5 text-amber-500" />
-              <span>CMS Admin Branch Sitemap</span>
+              <span>CMS Admin Branch</span>
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">
               {data.informationArchitecture?.sitemapCms.map((item, idx) => (
@@ -264,52 +227,41 @@ export const FcsCaseStudy: React.FC = () => {
             </ul>
           </div>
         </div>
-
-        {/* Structural Callouts */}
         <div className="space-y-2">
           {data.informationArchitecture?.decisions.map((dec, idx) => (
             <div key={idx} className="p-3.5 rounded-lg bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2.5">
               <CheckCircle className="w-4 h-4 text-accent dark:text-accent-dark shrink-0 mt-0.5" />
-              <span><strong>Architectural Decision:</strong> {dec}</span>
+              <span><strong>Decision: </strong>{dec}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 5. User Flows & Auth Middleware */}
+      {/* 5. User Flows & Verification */}
       <section>
-        <SectionHeading number="05" title="User Flows & Systemic Verification" id="flows" />
-        <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
-          {data.userFlows?.summary}
-        </p>
-
+        <SectionHeading number="05" title="User Flows & Verification Patterns" id="flows" />
+        <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">{data.userFlows?.summary}</p>
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="p-6 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark">
             <h4 className="text-base font-bold text-neutral-900 dark:text-neutral-100 mb-2 flex items-center gap-2">
               <Lock className="w-4 h-4 text-accent dark:text-accent-dark" />
-              <span>CMS Middleware Access Gate</span>
+              <span>CMS Middleware Gate</span>
             </h4>
-            <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              {data.userFlows?.middlewareNote}
-            </p>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">{data.userFlows?.middlewareNote}</p>
           </div>
-
           <div className="p-6 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark">
             <h4 className="text-base font-bold text-neutral-900 dark:text-neutral-100 mb-2 flex items-center gap-2">
               <Cpu className="w-4 h-4 text-accent dark:text-accent-dark" />
-              <span>Two-Tier Auth & MojoAuth Integration</span>
+              <span>Two-Tier Verification & MojoAuth</span>
             </h4>
-            <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              {data.userFlows?.mojoAuthNote}
-            </p>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">{data.userFlows?.mojoAuthNote}</p>
           </div>
         </div>
       </section>
 
-      {/* 6. Design Decisions & Visual Evidence */}
+      {/* 6. Design Decisions */}
       <section>
-        <SectionHeading number="06" title="Key Design Decisions & Evidence" id="decisions" />
-        
+        <SectionHeading number="06" title="Key Design Decisions" id="decisions" />
         <div className="space-y-12">
           {data.keyDecisions?.map((dec, idx) => (
             <article key={idx} className="p-6 sm:p-8 rounded-2xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark space-y-6">
@@ -334,28 +286,15 @@ export const FcsCaseStudy: React.FC = () => {
               </div>
 
               {dec.callout && (
-                <AttributionCallout type="pivot" title="Data-Driven Pivot">
+                <AttributionCallout type="pivot" title="Design Pivot">
                   <p>{dec.callout}</p>
                 </AttributionCallout>
               )}
 
-              {/* Image Evidence */}
               {dec.images && dec.images.length > 0 && (
-                <div className="space-y-4 pt-2">
+                <div className={`pt-2 ${dec.images.length > 1 ? 'grid sm:grid-cols-2 gap-4' : ''}`}>
                   {dec.images.map((img, imgIdx) => (
-                    <figure key={imgIdx} className="rounded-xl overflow-hidden border border-surface-borderLight dark:border-surface-borderDark bg-neutral-900">
-                      <img
-                        src={getAssetUrl(img.src)}
-                        alt={img.alt}
-                        className="w-full h-auto object-cover max-h-[500px]"
-                        loading="lazy"
-                      />
-                      {img.caption && (
-                        <figcaption className="p-3 text-xs text-center text-neutral-400 bg-neutral-950 border-t border-neutral-800">
-                          {img.caption}
-                        </figcaption>
-                      )}
-                    </figure>
+                    <CaseImage key={imgIdx} src={img.src} alt={img.alt} caption={img.caption} />
                   ))}
                 </div>
               )}
@@ -364,55 +303,41 @@ export const FcsCaseStudy: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. Prototype Links & Caveats */}
+      {/* 7. Prototype */}
       <section>
         <SectionHeading number="07" title="Prototype & Deliverables" id="prototype" />
-        <div className="grid sm:grid-cols-2 gap-4 mb-6">
-          <div className="p-5 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark flex items-center justify-between">
-            <div>
-              <h4 className="font-bold text-sm text-neutral-900 dark:text-neutral-100">Figma High-Fidelity Prototype</h4>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400">Complete UI component library & screens</p>
-            </div>
-            <PlaceholderBlock label={data.prototype?.figmaUrl || 'Figma Link'} description="Interactive Figma design file" />
+        <div className="grid sm:grid-cols-2 gap-4 mb-4">
+          <div className="p-5 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark">
+            <h4 className="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">Figma Prototype</h4>
+            <PlaceholderBlock label={data.prototype?.figmaUrl || '[FIGMA_LINK_FCS]'} description="High-fidelity interactive Figma file" />
           </div>
-
-          <div className="p-5 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark flex items-center justify-between">
-            <div>
-              <h4 className="font-bold text-sm text-neutral-900 dark:text-neutral-100">Miro Research Workspace</h4>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400">Affinity mapping, journey maps & IA</p>
-            </div>
-            <PlaceholderBlock label={data.prototype?.miroUrl || 'Miro Link'} description="Interactive Miro research board" />
+          <div className="p-5 rounded-xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark">
+            <h4 className="font-bold text-sm text-neutral-900 dark:text-neutral-100 mb-1">Miro Research Workspace</h4>
+            <PlaceholderBlock label={data.prototype?.miroUrl || '[MIRO_LINK_FCS]'} description="Journey maps, affinity map, and IA" />
           </div>
         </div>
-
-        <div className="space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
-          <p>• {data.prototype?.implementationGapNote}</p>
-          <p>• {data.prototype?.unsplashNote}</p>
-        </div>
+        <ul className="space-y-1 text-xs text-neutral-500 dark:text-neutral-400">
+          <li>· {data.prototype?.implementationGapNote}</li>
+          <li>· {data.prototype?.unsplashNote}</li>
+        </ul>
       </section>
 
-      {/* 8. Outcome & Status */}
+      {/* 8. Outcome */}
       <section>
-        <SectionHeading number="08" title="Outcome & Reflection" id="outcome" />
+        <SectionHeading number="08" title="Outcome" id="outcome" />
         <div className="p-8 rounded-2xl bg-surface-cardLight dark:bg-surface-cardDark border border-surface-borderLight dark:border-surface-borderDark space-y-4">
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">
-              {data.outcome.status}
-            </span>
+            <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">{data.outcome.status}</span>
           </div>
-
-          <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
-            {data.outcome.summary}
-          </p>
-
+          <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">{data.outcome.summary}</p>
           {data.outcome.learningsOrCritique && (
             <div className="pt-4 border-t border-surface-borderLight dark:border-surface-borderDark space-y-2">
-              <span className="text-xs font-bold text-neutral-900 dark:text-neutral-100 block">Key Learnings:</span>
+              <span className="text-xs font-bold text-neutral-900 dark:text-neutral-100 block">Key Takeaways</span>
               <ul className="space-y-1.5 text-xs text-neutral-600 dark:text-neutral-400">
                 {data.outcome.learningsOrCritique.map((l, lIdx) => (
                   <li key={lIdx} className="flex items-start gap-2">
-                    <span className="text-accent dark:text-accent-dark font-bold">•</span>
+                    <span className="text-accent dark:text-accent-dark font-bold">·</span>
                     <span>{l}</span>
                   </li>
                 ))}
@@ -424,12 +349,3 @@ export const FcsCaseStudy: React.FC = () => {
     </div>
   );
 };
-
-// Helper icon component
-function UsersIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...props} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-    </svg>
-  );
-}
