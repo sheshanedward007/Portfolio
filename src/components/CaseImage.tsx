@@ -77,18 +77,32 @@ export const CaseImage: React.FC<CaseImageProps> = ({ src, alt, caption, classNa
             className="w-full h-auto object-cover max-h-[420px]"
             loading="lazy"
           />
+          {/* Always visible subtle pill badge in top right */}
+          <div className="absolute top-2.5 right-2.5 pointer-events-none">
+            <span className="flex items-center gap-1 text-[11px] font-medium text-white/90 bg-black/65 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
+              <ZoomIn className="w-3 h-3 text-white/80" />
+              Click to expand
+            </span>
+          </div>
+
           {/* Hover overlay hint */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 text-white text-xs font-semibold bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-sm">
+            <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5 text-white text-xs font-semibold bg-black/75 px-3.5 py-1.5 rounded-full backdrop-blur-sm shadow-md">
               <ZoomIn className="w-3.5 h-3.5" />
               Click to view full image
             </span>
           </div>
         </div>
-        {caption && (
-          <figcaption className="p-3 text-xs text-center text-neutral-400 bg-neutral-950 border-t border-neutral-800">
-            {caption}
+        {caption ? (
+          <figcaption className="p-3 text-xs text-center text-neutral-400 bg-neutral-950 border-t border-neutral-800 flex items-center justify-center gap-1.5 flex-wrap">
+            <span>{caption}</span>
+            <span className="text-neutral-500 font-normal shrink-0">· (Click image to expand)</span>
           </figcaption>
+        ) : (
+          <div className="px-3 py-1.5 text-[11px] text-center text-neutral-500 bg-neutral-950 border-t border-neutral-800 flex items-center justify-center gap-1">
+            <ZoomIn className="w-3 h-3" />
+            <span>Click image to expand</span>
+          </div>
         )}
       </figure>
 
