@@ -3,6 +3,7 @@ import { caseStudiesData } from '../data/caseStudies';
 import { SectionHeading } from '../components/SectionHeading';
 import { AttributionCallout } from '../components/AttributionCallout';
 import { FlowchartDiagram } from '../components/FlowchartDiagram';
+import { getAssetUrl } from '../utils/assets';
 import { ShoppingCart, AlertCircle, CreditCard, ShieldCheck, Layers, GitBranch, ArrowRight } from 'lucide-react';
 
 export const NestleConnectCaseStudy: React.FC = () => {
@@ -140,7 +141,7 @@ export const NestleConnectCaseStudy: React.FC = () => {
             {data.keyDecisions[0].images && (
               <figure className="rounded-xl overflow-hidden border border-surface-borderLight dark:border-surface-borderDark bg-neutral-900">
                 <img
-                  src={data.keyDecisions[0].images[0].src}
+                  src={getAssetUrl(data.keyDecisions[0].images[0].src)}
                   alt={data.keyDecisions[0].images[0].alt}
                   className="w-full h-auto object-cover max-h-[500px]"
                   loading="lazy"
@@ -176,7 +177,7 @@ export const NestleConnectCaseStudy: React.FC = () => {
 
               <figure className="rounded-xl overflow-hidden border border-surface-borderLight dark:border-surface-borderDark bg-neutral-900">
                 <img
-                  src={scr.src}
+                  src={getAssetUrl(scr.src)}
                   alt={scr.alt}
                   className="w-full h-auto object-cover max-h-[500px]"
                   loading="lazy"

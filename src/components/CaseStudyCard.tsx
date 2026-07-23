@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { CaseStudyData } from '../types';
 
+import { getAssetUrl } from '../utils/assets';
+
 interface CaseStudyCardProps {
   caseStudy: CaseStudyData;
   index: number;
@@ -14,7 +16,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index }
       {/* Thumbnail */}
       <div className="md:w-1/2 overflow-hidden bg-neutral-100 dark:bg-neutral-900 aspect-video md:aspect-auto relative min-h-[220px]">
         <img
-          src={caseStudy.thumbnail}
+          src={getAssetUrl(caseStudy.thumbnail)}
           alt={caseStudy.title}
           className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
           loading="lazy"

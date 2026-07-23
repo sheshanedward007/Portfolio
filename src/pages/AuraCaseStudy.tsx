@@ -4,6 +4,7 @@ import { SectionHeading } from '../components/SectionHeading';
 import { AttributionCallout } from '../components/AttributionCallout';
 import { PlaceholderBlock } from '../components/PlaceholderBlock';
 import { FlowchartDiagram } from '../components/FlowchartDiagram';
+import { getAssetUrl } from '../utils/assets';
 import { Compass, Smile, Sparkles, Scissors, AlertTriangle, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 export const AuraCaseStudy: React.FC = () => {
@@ -134,7 +135,7 @@ export const AuraCaseStudy: React.FC = () => {
               {dec.images && (
                 <figure className="rounded-xl overflow-hidden border border-surface-borderLight dark:border-surface-borderDark bg-neutral-900">
                   <img
-                    src={dec.images[0].src}
+                    src={getAssetUrl(dec.images[0].src)}
                     alt={dec.images[0].alt}
                     className="w-full h-auto object-cover max-h-[500px]"
                     loading="lazy"

@@ -3,6 +3,7 @@ import { caseStudiesData } from '../data/caseStudies';
 import { SectionHeading } from '../components/SectionHeading';
 import { AttributionCallout } from '../components/AttributionCallout';
 import { PlaceholderBlock } from '../components/PlaceholderBlock';
+import { getAssetUrl } from '../utils/assets';
 import { ArrowUpRight, CheckCircle, ExternalLink, ShieldCheck, UserCheck, Sparkles, Layers, Lock, Cpu } from 'lucide-react';
 
 export const FcsCaseStudy: React.FC = () => {
@@ -344,7 +345,7 @@ export const FcsCaseStudy: React.FC = () => {
                   {dec.images.map((img, imgIdx) => (
                     <figure key={imgIdx} className="rounded-xl overflow-hidden border border-surface-borderLight dark:border-surface-borderDark bg-neutral-900">
                       <img
-                        src={img.src}
+                        src={getAssetUrl(img.src)}
                         alt={img.alt}
                         className="w-full h-auto object-cover max-h-[500px]"
                         loading="lazy"
