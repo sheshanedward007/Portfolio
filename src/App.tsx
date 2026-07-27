@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Nav } from './components/Nav';
 import { Footer } from './components/Footer';
@@ -12,7 +13,7 @@ import { About } from './pages/About';
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -23,23 +24,25 @@ export const App: React.FC = () => {
   const basename = import.meta.env.DEV ? '/' : '/Portfolio';
 
   return (
-    <BrowserRouter basename={basename}>
-      <ScrollToTop />
-      <div className="min-h-screen flex flex-col bg-surface-light dark:bg-surface-dark text-neutral-900 dark:text-neutral-100 font-sans transition-colors duration-200">
-        <Nav />
-        <main className="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/work/fcs" element={<FcsCaseStudy />} />
-            <Route path="/work/nestle-connect" element={<NestleConnectCaseStudy />} />
-            <Route path="/work/aura" element={<AuraCaseStudy />} />
-            <Route path="/about" element={<About />} />
-            <Route path="*" element={<Home />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter basename={basename}>
+        <ScrollToTop />
+        <div className="min-h-screen flex flex-col bg-surface-light dark:bg-surface-dark text-neutral-900 dark:text-neutral-100 font-sans transition-colors duration-200">
+          <Nav />
+          <main className="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/work/fcs" element={<FcsCaseStudy />} />
+              <Route path="/work/nestle-connect" element={<NestleConnectCaseStudy />} />
+              <Route path="/work/aura" element={<AuraCaseStudy />} />
+              <Route path="/about" element={<About />} />
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 };
 

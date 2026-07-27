@@ -1,15 +1,51 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { caseStudiesData } from '../data/caseStudies';
 import { SectionHeading } from '../components/SectionHeading';
 import { AttributionCallout } from '../components/AttributionCallout';
 import { CaseImage } from '../components/CaseImage';
 import { CheckCircle, Layers, Lock, Cpu, ExternalLink } from 'lucide-react';
 
+const BASE_URL = 'https://sheshanedward007.github.io/Portfolio';
+
 export const FcsCaseStudy: React.FC = () => {
   const data = caseStudiesData.find(c => c.id === 'fcs')!;
 
   return (
-    <div className="max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-0 space-y-16">
+    <>
+      <Helmet>
+        <title>FCS Website Case Study — UI/UX Research & Design | Sheshan Edward</title>
+        <meta name="description" content="Full UX process case study: designing the official digital hub for APIIT's Full Stack Computing Society — stakeholder research, personas, journey maps, information architecture, wireframes, and high-fidelity Figma prototype." />
+        <link rel="canonical" href={`${BASE_URL}/work/fcs/`} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`${BASE_URL}/work/fcs/`} />
+        <meta property="og:title" content="FCS Website Case Study — UI/UX Research & Design | Sheshan Edward" />
+        <meta property="og:description" content="Full UX process case study: designing the official digital hub for APIIT's Full Stack Computing Society — stakeholder research, personas, journey maps, information architecture, wireframes, and high-fidelity Figma prototype." />
+        <meta property="og:image" content={`${BASE_URL}/assets/images/Home.png`} />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="FCS Website Case Study — UI/UX Research & Design | Sheshan Edward" />
+        <meta name="twitter:description" content="Full UX process case study: designing the official digital hub for APIIT's Full Stack Computing Society — stakeholder research, personas, journey maps, information architecture, wireframes, and high-fidelity Figma prototype." />
+        <meta name="twitter:image" content={`${BASE_URL}/assets/images/Home.png`} />
+
+        {/* JSON-LD: CreativeWork */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "name": "FCS Website — Full UX Process & Design",
+          "description": "End-to-end UX design for the Full Stack Computing Society digital platform — research, personas, information architecture, wireframes, and high-fidelity prototype.",
+          "author": {
+            "@type": "Person",
+            "name": "Sheshan Edward",
+            "url": `${BASE_URL}/`
+          }
+        })}</script>
+      </Helmet>
+
+      <div className="max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-0 space-y-16">
       {/* Header */}
       <header className="space-y-4">
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
@@ -372,5 +408,6 @@ export const FcsCaseStudy: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };

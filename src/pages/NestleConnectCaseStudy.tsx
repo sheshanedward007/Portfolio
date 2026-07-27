@@ -1,9 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { caseStudiesData } from '../data/caseStudies';
 import { SectionHeading } from '../components/SectionHeading';
 import { AttributionCallout } from '../components/AttributionCallout';
 import { CaseImage } from '../components/CaseImage';
 import { GitBranch, CheckCircle2, Clock, AlertCircle, ArrowDown } from 'lucide-react';
+
+const BASE_URL = 'https://sheshanedward007.github.io/Portfolio';
 
 // ─── Branching Flowchart ────────────────────────────────────────────────────
 
@@ -156,7 +159,40 @@ export const NestleConnectCaseStudy: React.FC = () => {
   const data = caseStudiesData.find(c => c.id === 'nestle-connect')!;
 
   return (
-    <div className="max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-0 space-y-16">
+    <>
+      <Helmet>
+        <title>Nestlé Connect Case Study — B2B UX & Full-Stack | Sheshan Edward</title>
+        <meta name="description" content="Case study: UX design for Nestlé Lanka's B2B ordering and issue reporting platform — credit/cash payment split UI, order lifecycle state machine, and time-boxed auto-escalation for issue tracking." />
+        <link rel="canonical" href={`${BASE_URL}/work/nestle-connect/`} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`${BASE_URL}/work/nestle-connect/`} />
+        <meta property="og:title" content="Nestlé Connect Case Study — B2B UX & Full-Stack | Sheshan Edward" />
+        <meta property="og:description" content="Case study: UX design for Nestlé Lanka's B2B ordering and issue reporting platform — credit/cash payment split UI, order lifecycle state machine, and time-boxed auto-escalation for issue tracking." />
+        <meta property="og:image" content={`${BASE_URL}/assets/images/Catalogue.png`} />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Nestlé Connect Case Study — B2B UX & Full-Stack | Sheshan Edward" />
+        <meta name="twitter:description" content="Case study: UX design for Nestlé Lanka's B2B ordering and issue reporting platform — credit/cash payment split UI, order lifecycle state machine, and time-boxed auto-escalation for issue tracking." />
+        <meta name="twitter:image" content={`${BASE_URL}/assets/images/Catalogue.png`} />
+
+        {/* JSON-LD: CreativeWork */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "name": "Nestlé Connect — Ordering & Issue Reporting Platform UX",
+          "description": "UX design for a B2B FMCG retail management system: ordering workflow, payment credit-split interface, and structured issue escalation system.",
+          "author": {
+            "@type": "Person",
+            "name": "Sheshan Edward",
+            "url": `${BASE_URL}/`
+          }
+        })}</script>
+      </Helmet>
+
+      <div className="max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-0 space-y-16">
       {/* Header */}
       <header className="space-y-4">
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
@@ -296,5 +332,6 @@ export const NestleConnectCaseStudy: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };

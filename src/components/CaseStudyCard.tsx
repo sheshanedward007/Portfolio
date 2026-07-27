@@ -14,7 +14,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, index }
   return (
     <article className="group bg-surface-cardLight dark:bg-surface-cardDark rounded-xl border border-surface-borderLight dark:border-surface-borderDark overflow-hidden hover:border-accent dark:hover:border-accent-dark transition-all duration-300 shadow-sm hover:shadow-md flex flex-col md:flex-row">
       {/* Thumbnail */}
-      <div className="md:w-1/2 overflow-hidden bg-neutral-100 dark:bg-neutral-900 aspect-video md:aspect-auto relative min-h-[220px]">
+      <div className="md:w-1/2 overflow-hidden bg-neutral-100 dark:bg-neutral-900 aspect-video relative min-h-[220px]">
         <img
           src={getAssetUrl(caseStudy.thumbnail)}
           alt={caseStudy.title}

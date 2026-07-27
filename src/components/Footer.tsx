@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
               Sheshan Edward
             </Link>
             <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400 max-w-md">
-              UI/UX Design | Full-Stack Development Background | APIIT Sri Lanka (Staffordshire University)
+              UI/UX Design | Full-Stack Development Background
             </p>
           </div>
 

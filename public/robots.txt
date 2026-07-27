@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sheshanedward007.github.io/Portfolio/sitemap.xml

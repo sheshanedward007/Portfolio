@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { caseStudiesData } from '../data/caseStudies';
 import { SectionHeading } from '../components/SectionHeading';
 import { AttributionCallout } from '../components/AttributionCallout';
@@ -6,11 +7,46 @@ import { PlaceholderBlock } from '../components/PlaceholderBlock';
 import { CaseImage } from '../components/CaseImage';
 import { Compass, Sparkles, Scissors, AlertTriangle } from 'lucide-react';
 
+const BASE_URL = 'https://sheshanedward007.github.io/Portfolio';
+
 export const AuraCaseStudy: React.FC = () => {
   const data = caseStudiesData.find(c => c.id === 'aura')!;
 
   return (
-    <div className="max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-0 space-y-16">
+    <>
+      <Helmet>
+        <title>Aura Case Study — Mood-Based Travel Companion UX | Sheshan Edward</title>
+        <meta name="description" content="Designathon case study: Aura — a mood-based travel companion connecting daily check-ins, personalized destinations, and AI-generated post-trip memory journals." />
+        <link rel="canonical" href={`${BASE_URL}/work/aura/`} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`${BASE_URL}/work/aura/`} />
+        <meta property="og:title" content="Aura Case Study — Mood-Based Travel Companion UX | Sheshan Edward" />
+        <meta property="og:description" content="Designathon case study: Aura — a mood-based travel companion connecting daily check-ins, personalized destinations, and AI-generated post-trip memory journals." />
+        <meta property="og:image" content={`${BASE_URL}/assets/images/MoodCheck.png`} />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Aura Case Study — Mood-Based Travel Companion UX | Sheshan Edward" />
+        <meta name="twitter:description" content="Designathon case study: Aura — a mood-based travel companion connecting daily check-ins, personalized destinations, and AI-generated post-trip memory journals." />
+        <meta name="twitter:image" content={`${BASE_URL}/assets/images/MoodCheck.png`} />
+
+        {/* JSON-LD: CreativeWork */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "name": "Aura — Mood-Based Travel Companion",
+          "description": "A mood-based travel companion concept built during a one-week designathon, mapping daily check-ins to recommendations and generating post-trip memory journals.",
+          "author": {
+            "@type": "Person",
+            "name": "Sheshan Edward",
+            "url": `${BASE_URL}/`
+          }
+        })}</script>
+      </Helmet>
+
+      <div className="max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-0 space-y-16">
       {/* Header */}
       <header className="space-y-4">
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
@@ -197,5 +233,6 @@ export const AuraCaseStudy: React.FC = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };

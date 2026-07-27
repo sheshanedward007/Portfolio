@@ -13,7 +13,7 @@ export const caseStudiesData: CaseStudyData[] = [
     attribution: 'UX research and design across the full pipeline: stakeholder identification, empathy mapping, personas, journey maps, information architecture, wireframes, and high-fidelity prototype. Implementation was handled separately. I also conducted feasibility research into supporting technologies — for example, evaluating MojoAuth as a viable hosted OTP provider.',
     context: {
       overview: 'Full Stack Computing Society (FCS) is the primary computing society at APIIT Sri Lanka. I led the end-to-end UX design process — from initial research through to a high-fidelity Figma prototype — to establish a structured digital platform that could serve students, committee members, and external industry partners alike.',
-      organization: 'APIIT Sri Lanka (Staffordshire University partnership)',
+      organization: 'APIIT Sri Lanka (University of Staffordshire partnership)',
       liveUrl: '[FCS_LIVE_SITE_LINK]'
     },
     problem: {
