@@ -15,29 +15,29 @@ export const AuraCaseStudy: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Aura Case Study — Mood-Based Travel Companion UX | Sheshan Edward</title>
-        <meta name="description" content="Designathon case study: Aura — a mood-based travel companion connecting daily check-ins, personalized destinations, and AI-generated post-trip memory journals." />
+        <title>Aura Case Study — AI Travel Companion UX | Sheshan Edward</title>
+        <meta name="description" content="Designathon case study: Aura — an AI travel companion that learns from user interests, past trips, and ongoing interaction to plan personalised journeys, with mood-based check-ins for spontaneous, location-aware suggestions." />
         <link rel="canonical" href={`${BASE_URL}/work/aura/`} />
 
         {/* Open Graph */}
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`${BASE_URL}/work/aura/`} />
-        <meta property="og:title" content="Aura Case Study — Mood-Based Travel Companion UX | Sheshan Edward" />
-        <meta property="og:description" content="Designathon case study: Aura — a mood-based travel companion connecting daily check-ins, personalized destinations, and AI-generated post-trip memory journals." />
+        <meta property="og:title" content="Aura Case Study — AI Travel Companion UX | Sheshan Edward" />
+        <meta property="og:description" content="Designathon case study: Aura — an AI travel companion that learns from user interests, past trips, and ongoing interaction to plan personalised journeys, with mood-based check-ins for spontaneous, location-aware suggestions." />
         <meta property="og:image" content={`${BASE_URL}/assets/images/MoodCheck.png`} />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Aura Case Study — Mood-Based Travel Companion UX | Sheshan Edward" />
-        <meta name="twitter:description" content="Designathon case study: Aura — a mood-based travel companion connecting daily check-ins, personalized destinations, and AI-generated post-trip memory journals." />
+        <meta name="twitter:title" content="Aura Case Study — AI Travel Companion UX | Sheshan Edward" />
+        <meta name="twitter:description" content="Designathon case study: Aura — an AI travel companion that learns from user interests, past trips, and ongoing interaction to plan personalised journeys, with mood-based check-ins for spontaneous, location-aware suggestions." />
         <meta name="twitter:image" content={`${BASE_URL}/assets/images/MoodCheck.png`} />
 
         {/* JSON-LD: CreativeWork */}
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CreativeWork",
-          "name": "Aura — Mood-Based Travel Companion",
-          "description": "A mood-based travel companion concept built during a one-week designathon, mapping daily check-ins to recommendations and generating post-trip memory journals.",
+          "name": "Aura — AI Travel Companion",
+          "description": "An AI travel companion concept built during a one-week designathon. The AI builds understanding of the traveller from their interests, interaction patterns, and trip history, then uses real-time mood check-ins to surface spontaneous, location-relevant suggestions.",
           "author": {
             "@type": "Person",
             "name": "Sheshan Edward",

@@ -409,8 +409,8 @@ export const caseStudiesData: CaseStudyData[] = [
   {
     id: 'aura',
     slug: 'aura',
-    title: 'Aura — Mood-Based Travel Companion',
-    subtitle: 'Connecting daily mood check-ins with personalised destination recommendations and AI-generated post-trip memory journals.',
+    title: 'Aura — AI Travel Companion',
+    subtitle: 'An AI that learns from your interests, past trips, and how you use the app — then uses daily mood check-ins to suggest something spontaneous, right where you are.',
     role: 'Research & Ideation',
     disciplineTag: 'UX Research & Design',
     thumbnail: '/assets/images/MoodCheck.png',
