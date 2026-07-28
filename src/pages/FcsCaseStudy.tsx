@@ -136,8 +136,8 @@ export const FcsCaseStudy: React.FC = () => {
         <div className="mb-12">
           <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4">Personas</h3>
           <div className="grid sm:grid-cols-2 gap-6">
-            {data.research?.personas?.map((p, idx) => (
-              <div key={idx} className={`p-6 rounded-xl border ${p.highlight ? 'bg-accent-muted/40 dark:bg-accent-darkMuted/30 border-accent/40 dark:border-accent-dark/40 shadow-sm' : 'bg-surface-cardLight dark:bg-surface-cardDark border-surface-borderLight dark:border-surface-borderDark'}`}>
+            {data.research?.personas?.slice(0, 2)?.map((p, idx) => (
+              <div key={p.name} className={`p-6 rounded-xl border ${p.highlight ? 'bg-accent-muted/40 dark:bg-accent-darkMuted/30 border-accent/40 dark:border-accent-dark/40 shadow-sm' : 'bg-surface-cardLight dark:bg-surface-cardDark border-surface-borderLight dark:border-surface-borderDark'}`}>
                 {p.tag && (
                   <span className="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-accent dark:bg-accent-dark text-white mb-2">{p.tag}</span>
                 )}
@@ -152,8 +152,24 @@ export const FcsCaseStudy: React.FC = () => {
           </div>
 
           <AttributionCallout type="info" title="Why the Recruiter Persona Matters">
-            Most student club projects design only for fellow students. Including <strong>Mark Cooray (Industry Recruiter & Sponsor)</strong> as a primary persona required the design to surface verifiable, structured information — project portfolios, governance details, active event history — on first visit. That's a different design problem from serving a prospective member, and it produces meaningfully different IA decisions.
+            Most student club sites are designed only for fellow students. I included Mark Cooray, an industry recruiter, as a primary persona because recruiters need something different — quick, verifiable proof of what FCS actually does, not just event listings. That changed what information the site needed to surface up front.
           </AttributionCallout>
+
+          <div className="grid sm:grid-cols-2 gap-6">
+            {data.research?.personas?.slice(2)?.map((p, idx) => (
+              <div key={p.name} className={`p-6 rounded-xl border ${p.highlight ? 'bg-accent-muted/40 dark:bg-accent-darkMuted/30 border-accent/40 dark:border-accent-dark/40 shadow-sm' : 'bg-surface-cardLight dark:bg-surface-cardDark border-surface-borderLight dark:border-surface-borderDark'}`}>
+                {p.tag && (
+                  <span className="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-accent dark:bg-accent-dark text-white mb-2">{p.tag}</span>
+                )}
+                <h4 className="text-lg font-bold text-neutral-900 dark:text-neutral-50">{p.name}</h4>
+                <p className="text-xs font-medium text-accent dark:text-accent-dark mb-3">{p.role}</p>
+                <blockquote className="text-xs italic text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800/80 p-3 rounded border-l-2 border-accent dark:border-accent-dark mb-3">
+                  {p.quote}
+                </blockquote>
+                <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">{p.details}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Journey Maps */}
